@@ -25,9 +25,5 @@
     },
     "dependencies": {
         "coffee-script": "1.4.0"
-    },
-    "devDependencies": {
-        "nodeunit": "0.7.4",
-        "async": "0.1.22"
     }
 }
