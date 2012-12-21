@@ -1,7 +1,7 @@
 {
     "name": "whois-available",
     "version": "0.1.0",
-    "description": "whois-available returns whois information and checks whether domains are available for registration",
+    "description": "whois-available returns whois information and checks whether domains are available",
     "homepage": "http://github.com/snd/whois-available",
     "author": {
         "name": "Maximilian Krüger",
