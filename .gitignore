@@ -1,0 +1,5 @@
+test.coffee
+denic-test.coffee
+timeout-test.coffee
+node_modules/**
+tlds-alpha-by-domain.txt

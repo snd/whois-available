@@ -1,0 +1,51 @@
+#!/usr/bin/env coffee
+
+fs = require 'fs'
+
+async = require 'async'
+
+common = require './common'
+
+getDomains = (data) ->
+    lines = data.split('\n')
+    trimmed = lines.map (line) -> line.replace(/^\s+|\s+$/g,"")
+    trimmed.filter (line) -> line isnt '' and 0 isnt line.indexOf '#'
+
+getWhoisServer = (domain, cb) ->
+    common.whoisRequest 'whois.iana.org', domain, (err, result) ->
+        return cb err if err?
+        match = /whois:\s+(\S+)/.exec result
+        return cb() unless match?[1]?
+        cb null, match[1]
+
+input = process.argv[2]
+output = process.argv[3]
+
+if (not input?) or (not output?)
+    console.log "Usage: #{process.argv[1]} {input-file} {output-file}"
+    return
+
+fs.readFile input, 'utf8', (err, data) ->
+    throw err if err?
+
+    domains = getDomains data
+
+    whoisServers = {}
+
+    iterator = (domain, cb) ->
+        console.log 'TLD: ', domain
+        delayed = ->
+            getWhoisServer domain, (err, whoisServer) ->
+                return cb err if err?
+                unless whoisServer?
+                    console.log 'whois server: not found'
+                    return cb()
+                console.log 'whois server: ', whoisServer
+                whoisServers[domain.toLowerCase()] = whoisServer
+                cb()
+        setTimeout delayed, 300
+
+    async.forEachSeries domains, iterator, (err) ->
+        return cb err if err?
+        fs.writeFile 'whois-servers.json', JSON.stringify(whoisServers, null, 4), 'utf8', (err) ->
+            throw err if err?

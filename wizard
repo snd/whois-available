@@ -1,0 +1,49 @@
+#!/usr/bin/env coffee
+
+fs = require 'fs'
+
+async = require 'async'
+
+common = require './common'
+
+PROBE_DOMAIN = '3e06671903a7134da0d0e8f6fff25ffb'
+
+input = process.argv[2]
+output = process.argv[3]
+
+if (not input?) or (not output?)
+    console.log "Usage: #{process.argv[1]} {input-file} {output-file}"
+    return
+
+process.stdin.resume()
+process.stdin.setEncoding('utf8')
+
+fs.readFile input, 'utf8', (err, data) ->
+    throw err if err?
+
+    fs.readFile input, 'utf8', (err, data) ->
+
+        whoisServers = JSON.parse data
+
+        availabilityChecks = {}
+
+        iterator = (tld, cb) ->
+            console.log 'TLD: ', tld
+            whoisServer = whoisServers[tld]
+            console.log 'whois server: ', whoisServer
+            probeDomain = PROBE_DOMAIN + '.' + tld
+            common.whoisRequest whoisServer, probeDomain, (err, result) ->
+                if err?
+                    console.log 'error in whois request', err
+                    return cb()
+                console.log result
+                console.log 'please enter availability check'
+                process.stdin.once 'data', (availabilityCheck) ->
+                    availabilityChecks[whoisServer] = availabilityCheck.replace '\n', ''
+                    fs.writeFile output, JSON.stringify(availabilityChecks, null, 4), 'utf8', cb
+
+        tlds = Object.keys whoisServers
+
+        async.forEachSeries tlds, iterator, (err) ->
+            throw err if err?
+            process.stdin.pause()

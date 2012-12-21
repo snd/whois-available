@@ -1,0 +1,33 @@
+{
+    "name": "whois-available",
+    "version": "0.1.0",
+    "description": "whois-available returns whois information and checks whether domains are available for registration",
+    "homepage": "http://github.com/snd/whois-available",
+    "author": {
+        "name": "Maximilian Krüger",
+        "email": "kruemaxi@gmail.com",
+        "url": "http://github.com/snd"
+    },
+    "bugs": {
+        "url": "http://github.com/snd/whois-available/issues",
+        "email": "kruemaxi@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/snd/whois-available.git"
+    },
+    "licenses": {
+        "type": "MIT",
+        "url": "git://github.com/snd/whois-available/LICENSE"
+    },
+    "engines": {
+        "node": ">=0.8.5"
+    },
+    "dependencies": {
+        "coffee-script": "1.4.0"
+    },
+    "devDependencies": {
+        "nodeunit": "0.7.4",
+        "async": "0.1.22"
+    }
+}
