@@ -13,8 +13,7 @@ npm install whois-available
 ```coffeescript
 whoisAvailable = require 'whois-available'
 
-whoisAvailable 'google.com', (err, whoisResponse, isAvailable) ->
-    # ...
+whoisAvailable 'google.com', (err, whoisResponse, isAvailable) -> # ...
 ```
 
 ### working top level domains
