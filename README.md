@@ -1,6 +1,6 @@
 # whois-available
 
-whois-available returns whois information and checks whether domains are available.
+whois-available returns whois information and checks whether domains are available
 
 ### install
 
