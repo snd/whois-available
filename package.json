@@ -1,7 +1,8 @@
 {
     "name": "whois-available",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "whois-available returns whois information and checks whether domains are available",
+    "keywords": ["whois"],
     "homepage": "http://github.com/snd/whois-available",
     "author": {
         "name": "Maximilian Krüger",
@@ -24,6 +25,13 @@
         "node": ">=0.8.5"
     },
     "dependencies": {
-        "coffee-script": "1.4.0"
+    },
+    "devDependencies": {
+        "coffee-script": "1.6.3"
+    },
+    "main": "src/whois-available",
+    "scripts": {
+        "prepublish": "coffee --bare --compile --output src src/*.coffee",
+        "postpublish": "rm src/*.js"
     }
 }

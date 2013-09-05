@@ -3,3 +3,5 @@ denic-test.coffee
 timeout-test.coffee
 node_modules/**
 tlds-alpha-by-domain.txt
+src/*.js
+test/*.js

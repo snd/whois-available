@@ -10,10 +10,12 @@ npm install whois-available
 
 ### use
 
-```coffeescript
-whoisAvailable = require 'whois-available'
+```javascript
+var whoisAvailable = require('whois-available');
 
-whoisAvailable 'google.com', (err, whoisResponse, isAvailable) -> # ...
+whoisAvailable('google.com', function(err, whoisResponse, isAvailable) {
+    // ...
+});
 ```
 
 ### working top level domains
