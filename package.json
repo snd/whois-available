@@ -1,6 +1,6 @@
 {
     "name": "whois-available",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "description": "whois-available returns whois information and checks whether domains are available",
     "keywords": ["whois"],
     "homepage": "http://github.com/snd/whois-available",
