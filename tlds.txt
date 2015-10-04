@@ -53,7 +53,6 @@ beer
 bentley
 berlin
 best
-bi
 bid
 bike
 bingo
@@ -67,6 +66,7 @@ bmw
 bn
 bnpparibas
 boo
+boots
 boutique
 br
 bradesco
@@ -105,6 +105,7 @@ cf
 cfa
 cfd
 ch
+chanel
 channel
 chat
 cheap
@@ -207,6 +208,7 @@ exposed
 express
 fail
 faith
+family
 fan
 fans
 farm
@@ -253,6 +255,7 @@ gi
 gift
 gifts
 gives
+giving
 gl
 glass
 gle
@@ -273,6 +276,7 @@ graphics
 gratis
 green
 gripe
+group
 gs
 guge
 guide
@@ -302,6 +306,7 @@ how
 hr
 ht
 hu
+ice
 id
 ie
 ifm
@@ -349,6 +354,7 @@ kyoto
 kz
 la
 lacaixa
+lancaster
 land
 lat
 law
@@ -356,6 +362,7 @@ lawyer
 lease
 leclerc
 legal
+lexus
 lgbt
 li
 liaison
@@ -366,6 +373,7 @@ limited
 limo
 link
 live
+lixil
 loan
 loans
 lol
@@ -381,6 +389,7 @@ ly
 ma
 madrid
 maison
+man
 management
 mango
 market
@@ -403,6 +412,7 @@ mo
 mobi
 moda
 moe
+mom
 money
 mortgage
 moscow
@@ -517,6 +527,7 @@ sa
 saarland
 sale
 samsung
+sanofi
 sap
 sarl
 sb
@@ -530,6 +541,7 @@ science
 scot
 se
 seat
+seek
 services
 sew
 sexy
@@ -573,6 +585,7 @@ sx
 sy
 systems
 taipei
+tatamotors
 tatar
 tattoo
 tax
@@ -603,6 +616,7 @@ top
 toshiba
 tours
 town
+toyota
 toys
 trade
 trading
@@ -613,6 +627,7 @@ tv
 tw
 tz
 ua
+ubs
 ug
 uk
 university
@@ -631,6 +646,7 @@ vg
 viajes
 video
 villas
+vin
 vision
 vlaanderen
 vodka
@@ -650,6 +666,7 @@ whoswho
 wien
 wiki
 win
+wine
 wme
 work
 works
@@ -657,10 +674,13 @@ world
 ws
 wtf
 xerox
+xn--11b4c3d
 xn--1qqw23a
 xn--30rr7y
 xn--3bst00m
 xn--3ds443g
+xn--3pxu8k
+xn--42c2d9a
 xn--45q11c
 xn--4gbrim
 xn--55qw42g
@@ -672,14 +692,17 @@ xn--80ao21a
 xn--80asehdb
 xn--80aswg
 xn--90ais
+xn--9dbq2a
 xn--9et52u
 xn--c1avg
+xn--c2br7g
 xn--cg4bki
 xn--clchc0ea0b2g2a9gcd
 xn--czrs0t
 xn--czru2d
 xn--d1acj3b
 xn--d1alf
+xn--fhbei
 xn--fiq228c5hs
 xn--fiq64b
 xn--fiqs8s
@@ -689,6 +712,7 @@ xn--flw351e
 xn--hxt814e
 xn--i1b6b1a6a2e
 xn--io0a7i
+xn--j1aef
 xn--j1amh
 xn--j6w193g
 xn--kprw13d
@@ -700,6 +724,7 @@ xn--mgba3a4f16a
 xn--mgbaam7a8h
 xn--mgberp4a5d4ar
 xn--mgbx4cd0ab
+xn--mk1bu44c
 xn--mxtq1m
 xn--node
 xn--nqv7f
@@ -707,8 +732,11 @@ xn--o3cw4h
 xn--ogbpf8fl
 xn--p1acf
 xn--p1ai
+xn--pssy2u
 xn--q9jyb4c
 xn--qcka1pmc
+xn--t60b56a
+xn--tckwe
 xn--unup4y
 xn--vermgensberater-ctb
 xn--vermgensberatung-pwb
@@ -719,6 +747,7 @@ xn--xhq521b
 xn--yfro4i67o
 xn--ygbi2ammx
 xn--zfr164b
+xperia
 xxx
 xyz
 yodobashi
@@ -726,6 +755,5 @@ yoga
 youtube
 yt
 zip
-zm
 zone
 zuerich

@@ -8,6 +8,50 @@ requests = require './data/requests'
 substringsAvailable = require './data/substrings-available'
 substringsNotAvailable = require './data/substrings-not-available'
 
+module.exports = (domain, cb) ->
+  if domain is ''
+    process.nextTick ->
+      cb new Error 'domain must not be empty'
+    return
+
+  domainPunycode = punycode.toASCII domain
+
+  domainParts = domainPunycode.split '.'
+
+  tld = domainParts[domainParts.length-1]
+
+  server = whoisServers[tld]
+  unless server?
+    process.nextTick ->
+      # TODO finish this message
+      cb new Error "no known whois server for tld #{tld}. read xxx on how to add one"
+    return
+
+  domainToRequest = requests[server] or (x) -> x
+
+  request = domainToRequest domainPunycode
+
+  module.exports.whoisRequest server, request, (err, response) ->
+    if err?
+      cb err
+      return
+
+    availableBecauseResponseContained = containsAny substringsAvailable, response
+    if availableBecauseResponseContained?
+      # butNotAvailableBecauseResponseContained = null
+      butNotAvailableBecauseResponseContained = containsAny substringsNotAvailable, response
+
+    cb null,
+      isAvailable: availableBecauseResponseContained? and (not butNotAvailableBecauseResponseContained?)
+      domain: domain
+      punycode: domainPunycode
+      tld: tld
+      response: response
+      availableBecauseResponseContained: availableBecauseResponseContained
+      butNotAvailableBecauseResponseContained: butNotAvailableBecauseResponseContained
+      server: server
+      request: request
+
 whoisServers = {}
 Object.keys(whoisServersGenerated).forEach (tld) ->
   # manually disabled ?
@@ -18,7 +62,9 @@ Object.keys(whoisServersPatches).forEach (tld) ->
     # update or addition
     whoisServers[tld] = whoisServersPatches[tld]
 
-tcpRequest = (port, hostname, request, cb) ->
+whoisAvailable.tlds = Object.keys(whoisServers)
+
+whoisAvailable.tcpRequest = (port, hostname, request, cb) ->
   socket = net.createConnection port, hostname
   socket.setEncoding 'utf8'
   timeoutSeconds = 20
@@ -106,53 +152,11 @@ containsAny = (array, string) ->
 isSupported = (domain) ->
   whoisServers[domainToTld(domain)]?
 
-module.exports = (domain, cb) ->
-  if domain is ''
-    process.nextTick ->
-      cb new Error 'domain must not be empty'
-    return
-
-  domainPunycode = punycode.toASCII domain
-
-  domainParts = domainPunycode.split '.'
-
-  tld = domainParts[domainParts.length-1]
-
-  server = whoisServers[tld]
-  unless server?
-    process.nextTick ->
-      # TODO finish this message
-      cb new Error "no known whois server for tld #{tld}. read xxx on how to add one"
-    return
-
-  domainToRequest = requests[server] || (x) -> x
-
-  request = domainToRequest domainPunycode
-
-  whoisRequest server, request, (err, response) ->
-    if err?
-      cb err
-      return
-
-    availableBecauseResponseContained = containsAny substringsAvailable, response
-    if availableBecauseResponseContained?
-      # butNotAvailableBecauseResponseContained = null
-      butNotAvailableBecauseResponseContained = containsAny substringsNotAvailable, response
-
-    cb null,
-      isAvailable: availableBecauseResponseContained? and (not butNotAvailableBecauseResponseContained?)
-      domain: domain
-      punycode: domainPunycode
-      tld: tld
-      response: response
-      availableBecauseResponseContained: availableBecauseResponseContained
-      butNotAvailableBecauseResponseContained: butNotAvailableBecauseResponseContained
-      server: server
-      request: request
-
+module.exports.tcpRequest = tcpRequest
+module.exports.tcpRequest = tcpRequest
+module.exports.whois = whois
 module.exports.domainToTld = domainToTld
 module.exports.getServer = getServer
 module.exports.getAllTlds = getAllTlds
 module.exports.isSupported = isSupported
-module.exports.tlds = Object.keys(whoisServers)
 module.exports.whoisServers = whoisServers

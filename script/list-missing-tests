@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+// this should print nothing: then all supported domains are tested.
+
+var whois = require('../lib/whois-available');
+var domainsNotAvailable = require('../lib/data/domains-not-available');
+
+whois.tlds.forEach(function(tld) {
+  if (! domainsNotAvailable[tld]) {
+    console.log(tld);
+  }
+});

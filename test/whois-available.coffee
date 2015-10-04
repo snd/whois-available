@@ -77,6 +77,7 @@ module.exports =
         .then (result) ->
           unless result.isAvailable
             console.log result
+          # TODO this should fail right here
           test.ok result.isAvailable
           test.ok 'string' is typeof result.response
           test.ok result.response.length > 0

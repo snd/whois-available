@@ -1,13 +1,14 @@
 # manual additions, changes and deletions (set to null)
 module.exports =
 
-
   # disable these:
 
   # ECONNRESET
   'afl': null
   # TLD "autos" is not supported
   'autos': null
+  # not yet active
+  'abogado': null
   # ECONNRESET
   'barclaycard': null
   # ECONNRESET
@@ -28,10 +29,16 @@ module.exports =
   'build': null
   # request to whois.register.bg:43 timed out
   'bg': null
+  # TLD "bet" is not supported
+  'bet': null
+  # ECONNREFUSED
+  'bi': null
   # ECONNRESET
   'cancerresearch': null
   # ECONNRESET
   'cba': null
+  # TLD is not supported
+  'ceb': null
   # ECONNRESET
   'ci': null
   # TLD "cyou" is not supported
@@ -46,12 +53,16 @@ module.exports =
   'cuisinella': null
   # TLD "dabur" is not supported
   'dabur': null
+  # TLD is not supported
+  'delta': null
   # ECONNRESET
   'doha': null
   # Access will only be enabled for  IP addresses  authorised  by Red.es.
   'es': null
   # ECONNRESET
   'epson': null
+  # TLD is not supported
+  'fage': null
   # ECONNRESET
   'film': null
   # Query didn\'t succeed becauseof server-side error
@@ -60,6 +71,12 @@ module.exports =
   'homedepot': null
   # TLD "homes" is not supported
   'homes': null
+  # timeout
+  'hm': null
+  # not supported
+  'ist': null
+  # not supported
+  'istanbul': null
   # TLD "icbc" is not supported
   'icbc': null
   # TLD "jll" is not supported
@@ -112,12 +129,16 @@ module.exports =
   'nu': null
   # ECONNRESET
   'netbank': null
+  # not supported
+  'nokia': null
   # ECONNRESET
   'one': null
   # ECONNRESET
   'physio': null
   # ECONNRESET
   'philips': null
+  # not supported
+  'pet': null
   # request to whois.dns.pt:43 timed out
   'pt': null
   # request to whois.dns.pl:43 timed out
@@ -142,6 +163,8 @@ module.exports =
   'sex': null
   # TLD "schriram" is not supported
   'shriram': null
+  # not supported
+  'srl': null
   # ECONNRESET
   'sony': null
   # ECONNRESET
@@ -174,6 +197,8 @@ module.exports =
   'wtc': null
   # TLD "xin" is not supported
   'xin': null
+  # invalid domain name
+  'xn--90a3ac': null
   # The WHOIS query included an invalid character
   'xn--3e0b707e': null
   # TLD "xn--b4w605ferd" is not supported
@@ -192,3 +217,5 @@ module.exports =
   'xn--ngbc5azd': null
   # TLD "yachts" is not supported
   'yachts': null
+  # timeout
+  'zm': null

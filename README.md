@@ -19,6 +19,10 @@ each TLD (toplevel domain) has its own whois server.
 each whois server has a different way of saying whether domains are available or taken.  
 **whois-available normalizes those differences for [over 180 common TLDs](src/servers.coffee) so you don't have to !**
 
+three steps
+
+1. list of all whois servers from iana
+
 features
 
 high quality, integration tests, 180 supported domains
@@ -80,6 +84,37 @@ if you want to add support for another toplevel domain
 
 ### contribution
 
+```
+script/generate-whois-servers-coffee > src/data/whois-servers-generated.coffee
+```
+
+```
+script/generate-tlds-txt > tlds.txt
+```
+
+### API
+
+the following API documentation uses
+[flow type annotations](http://flowtype.org/) so you know precisely
+how to use it.
+
+#### whoisAvailable
+
+`
+type Result = {
+  isAvailable: boolean,
+  domain: string
+};
+`
+
+`whois(domain: string, cb: (?err: , ?result: Result) => any): any`
+
+`whois.tlds :: `
+
+`whois.tlds`
+
+
+### under the hood
 
 ### changelog
 
