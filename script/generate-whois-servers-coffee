@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+
+// prints coffeescript module to stdout that exports a mapping
+// from tlds to their whois servers
+
+var Promise = require('bluebird');
+
+var whois = require('../lib/whois-available');
+
+var getServer = Promise.promisify(whois.getServer);
+var getAllTlds = Promise.promisify(whois.getAllTlds);
+
+getAllTlds().then(function(tlds) {
+  console.log('module.exports =');
+  return Promise.all(tlds).each(function(tld) {
+    return getServer(tld)
+      .error(function(err) {
+        return Promise.reject(err);
+      })
+      .then(function(server) {
+        if (server) {
+          console.log("  '" + tld + "': '" + server + "'");
+        }
+        // don't move too fast
+        return Promise.delay(50);
+      });
+  });
+});

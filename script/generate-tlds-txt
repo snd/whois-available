@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+var whois = require('../lib/whois-available');
+
+whois.tlds.forEach(function(tld) {
+  console.log(tld);
+});

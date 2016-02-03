@@ -1,0 +1,15 @@
+module.exports = [
+  'NOT AVAILABLE'
+  'clientDeleteProhibited'
+  'clientRenewProhibited'
+  'clientUpdateProhibited'
+  'clientTransferProhibited'
+  'serverDeleteProhibited'
+  'serverRenewProhibited'
+  'serverUpdateProhibited'
+  'serverTransferProhibited'
+  'expires:'
+  'Domain Status: ok'
+  'This domain is not available for registration'
+  'Registrant Name:'
+]

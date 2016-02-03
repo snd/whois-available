@@ -1,37 +1,55 @@
 {
-    "name": "whois-available",
-    "version": "0.2.2",
-    "description": "whois-available returns whois information and checks whether domains are available",
-    "keywords": ["whois"],
-    "homepage": "http://github.com/snd/whois-available",
-    "author": {
-        "name": "Maximilian Krüger",
-        "email": "kruemaxi@gmail.com",
-        "url": "http://github.com/snd"
-    },
-    "bugs": {
-        "url": "http://github.com/snd/whois-available/issues",
-        "email": "kruemaxi@gmail.com"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/snd/whois-available.git"
-    },
-    "licenses": {
-        "type": "MIT",
-        "url": "git://github.com/snd/whois-available/LICENSE"
-    },
-    "engines": {
-        "node": ">=0.8.5"
-    },
-    "dependencies": {
-    },
-    "devDependencies": {
-        "coffee-script": "1.6.3"
-    },
-    "main": "src/whois-available",
-    "scripts": {
-        "prepublish": "coffee --bare --compile --output src src/*.coffee",
-        "postpublish": "rm src/*.js"
-    }
+  "name": "whois-available",
+  "version": "1.0.0",
+  "description": "returns whois information and checks whether domains are available",
+  "keywords": [
+    "whois",
+    "denic",
+    "tld",
+    "domain",
+    "domains",
+    "availability",
+    "available",
+    "taken",
+    "punycode",
+    "nic",
+    "iana",
+    "server"
+  ],
+  "homepage": "http://github.com/snd/whois-available",
+  "author": {
+    "name": "Maximilian Krüger",
+    "email": "kruemaxi@gmail.com",
+    "url": "http://github.com/snd"
+  },
+  "bugs": {
+    "url": "http://github.com/snd/whois-available/issues",
+    "email": "kruemaxi@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/snd/whois-available.git"
+  },
+  "licenses": {
+    "type": "MIT",
+    "url": "git://github.com/snd/whois-available/LICENSE"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "coffee-script": "1.9.3",
+    "nodeunit": "0.9.1",
+    "bluebird": "2.9.32",
+    "lodash": "3.10.0"
+  },
+  "scripts": {
+    "compile": "coffee --bare --compile --output lib src",
+    "prepublish": "npm run compile",
+    "pretest": "npm run compile",
+    "test": "nodeunit test"
+  },
+  "main": "lib/whois-available"
 }

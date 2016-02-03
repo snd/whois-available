@@ -1,6 +1,2 @@
-test.coffee
-denic-test.coffee
-timeout-test.coffee
+**.DS_Store
 node_modules/**
-tlds-alpha-by-domain.txt
-test/*.js
