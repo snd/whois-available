@@ -3,7 +3,7 @@ Promise = require 'bluebird'
 
 whoisAvailable = require '../src/whois-available'
 
-whoisAvailablePromise = Promise.promisify(whoisAvailable)
+whoisAvailablePromise = Promise.promisify(whoisAvailable.whois)
 getServer = Promise.promisify(whoisAvailable.getServer)
 getAllTlds = Promise.promisify(whoisAvailable.getAllTlds)
 
@@ -72,11 +72,10 @@ module.exports =
     iterator = (tld) ->
       availableDomain = '92705203b4c50' + '.' + tld
       notAvailableDomain = domainsNotAvailable[tld]
-      console.log availableDomain
       whoisAvailablePromise(availableDomain)
         .then (result) ->
           unless result.isAvailable
-            console.log result
+            console.log "Available check failed: ", result
           # TODO this should fail right here
           test.ok result.isAvailable
           test.ok 'string' is typeof result.response
@@ -87,13 +86,13 @@ module.exports =
           console.error err
         .then ->
           unless notAvailableDomain?
+            console.log "Missing notAvailable check: ", tld
             Promise.delay(10)
           else
-            console.log notAvailableDomain
             whoisAvailablePromise(notAvailableDomain)
               .then (result) ->
                 if result.isAvailable
-                  console.log result
+                  console.log "Not Available Test Failed: ", result
                 test.ok not result.isAvailable
                 test.ok 'string' is typeof result.response
                 test.ok result.response.length > 0
