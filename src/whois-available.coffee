@@ -8,7 +8,7 @@ requests = require './data/requests'
 substringsAvailable = require './data/substrings-available'
 substringsNotAvailable = require './data/substrings-not-available'
 
-module.exports = (domain, cb) ->
+whois = (domain, cb) ->
   if domain is ''
     process.nextTick ->
       cb new Error 'domain must not be empty'
@@ -31,7 +31,7 @@ module.exports = (domain, cb) ->
 
   request = domainToRequest domainPunycode
 
-  module.exports.whoisRequest server, request, (err, response) ->
+  whoisRequest server, request, (err, response) ->
     if err?
       cb err
       return
@@ -62,9 +62,9 @@ Object.keys(whoisServersPatches).forEach (tld) ->
     # update or addition
     whoisServers[tld] = whoisServersPatches[tld]
 
-whoisAvailable.tlds = Object.keys(whoisServers)
+tlds = Object.keys(whoisServers)
 
-whoisAvailable.tcpRequest = (port, hostname, request, cb) ->
+tcpRequest = (port, hostname, request, cb) ->
   socket = net.createConnection port, hostname
   socket.setEncoding 'utf8'
   timeoutSeconds = 20
@@ -153,7 +153,7 @@ isSupported = (domain) ->
   whoisServers[domainToTld(domain)]?
 
 module.exports.tcpRequest = tcpRequest
-module.exports.tcpRequest = tcpRequest
+module.exports.tlds = tlds
 module.exports.whois = whois
 module.exports.domainToTld = domainToTld
 module.exports.getServer = getServer
